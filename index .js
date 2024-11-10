@@ -27,7 +27,12 @@ app.post("/upload", upload.single("profileImage"), (req, res) => {
   try {
     console.log(req.body);
     console.log(req.file);
-    res.redirect("/");
+    res.json({
+      imageName: req.file.originalname,
+      imageType: req.file.mimetype,
+      size: req.file.size,
+    });
+    // res.redirect("/");
   } catch (err) {
     console.log("error occured", err);
   }
