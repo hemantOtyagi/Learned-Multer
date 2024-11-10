@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const multer = require("multer");
-// const upload = multer({ dest:"uploads/" })
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,7 +32,6 @@ app.post("/upload", upload.single("profileImage"), (req, res) => {
       imageType: req.file.mimetype,
       size: req.file.size,
     });
-    // res.redirect("/");
   } catch (err) {
     console.log("error occured", err);
   }
